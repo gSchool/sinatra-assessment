@@ -22,4 +22,12 @@ feature 'Product Manager' do
     fill_in 'new_item', with: 'Kale Chips'
     click_button 'Create Product'
   end
+
+  scenario 'User sees the product they entered underneath the "Welcome" message on the homepage' do 
+    visit '/'
+    click_link 'Add a Product'
+    fill_in 'new_item', with: 'Kombucha'
+    click_button 'Create Product'
+    within('li') {expect(page).to have_content("Kombucha")}
+  end
 end
